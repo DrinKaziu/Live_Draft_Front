@@ -15,20 +15,19 @@ class DraftBoardContainer extends React.Component {
 
   componentDidMount() {
     getPlayers()
-    .then(players => this.setState({
-      players
-    }))
+    .then(players => {
+      const active_players = players.filter(player => player.active === 1)
+      this.setState({
+        players: active_players
+      })
+    })
   }
 
-  // searchOptions = () => {
-  //   this.state.players.map(player =>
-  //     console.log(player.name)
-  //   )
-  // }
+
 
 
   render() {
-    console.log(this.state.players);
+    // console.log(this.state.players);
     return(
       <div>
         <PickNavBar
