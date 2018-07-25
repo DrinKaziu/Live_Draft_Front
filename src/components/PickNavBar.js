@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, Button, Dropdown } from 'semantic-ui-react';
 // import { searchOptions } from './DraftBoardContainer';
-// import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
 
 
 class PickNavBar extends React.Component {
@@ -19,6 +19,10 @@ class PickNavBar extends React.Component {
   render() {
     const { activeItem, searchQuery, value } = this.state
 
+    const players = this.props.players.map(p => {
+      return {text: `${p.fname} ${p.lname} - ${p.team}`}
+    })
+
     return(
       <Menu tabular>
         <Menu.Item name='Board' active={activeItem === 'Board'} onClick={this.handleItemClick} />
@@ -32,7 +36,7 @@ class PickNavBar extends React.Component {
           multiple
           onChange={this.handleChange}
           onSearchChange={this.handleSearchChange}
-          // options={searchOptions}
+          options={players}
           placeholder='Your pick... '
           search
           searchQuery={searchQuery}

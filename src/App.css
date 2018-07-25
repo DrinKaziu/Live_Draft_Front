@@ -5,6 +5,10 @@
 
 .dropdown {
   margin-top: 7px;
+  margin-right: 450px; /*will have to remove when adding content to the right*/
   height: 20px;
-  margin-right: 350px;
+}
+
+.theader {
+  text-align: center;
 }

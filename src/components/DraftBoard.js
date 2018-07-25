@@ -3,6 +3,7 @@ import PlayerList from './PlayerList';
 import { Table } from 'semantic-ui-react';
 
 
+
 class DraftBoard extends React.Component {
 
 
@@ -11,7 +12,7 @@ class DraftBoard extends React.Component {
       <div>
         <PlayerList players={this.props.players}/>
         <Table compact celled definition>
-          <Table.Header>
+          <Table.Header className="theader">
             <Table.Row>
               <Table.HeaderCell />
               <Table.HeaderCell>Team #1</Table.HeaderCell>
@@ -29,7 +30,7 @@ class DraftBoard extends React.Component {
 
           <Table.Body>
             <Table.Row className="trow">
-              <Table.Cell collapsing>1
+              <Table.Cell collapsing className="round">1
               </Table.Cell>
               <Table.Cell>1</Table.Cell>
               <Table.Cell>2</Table.Cell>
@@ -43,7 +44,7 @@ class DraftBoard extends React.Component {
               <Table.Cell>10</Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>2
+              <Table.Cell collapsing className="round">2
               </Table.Cell>
               <Table.Cell>20</Table.Cell>
               <Table.Cell>19</Table.Cell>
@@ -57,7 +58,7 @@ class DraftBoard extends React.Component {
               <Table.Cell>11</Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>3
+              <Table.Cell collapsing className="round">3
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -71,7 +72,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>4
+              <Table.Cell collapsing className="round">4
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -85,7 +86,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>5
+              <Table.Cell collapsing className="round">5
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -99,7 +100,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>6
+              <Table.Cell collapsing className="round">6
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -113,7 +114,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>7
+              <Table.Cell collapsing className="round">7
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -127,7 +128,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>8
+              <Table.Cell collapsing className="round">8
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -141,7 +142,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>8
+              <Table.Cell collapsing className="round">9
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -155,7 +156,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>9
+              <Table.Cell collapsing className="round">10
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -169,7 +170,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>10
+              <Table.Cell collapsing className="round">11
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -183,7 +184,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>11
+              <Table.Cell collapsing className="round">12
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -197,7 +198,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>12
+              <Table.Cell collapsing className="round">13
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -211,7 +212,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>13
+              <Table.Cell collapsing className="round">14
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
@@ -225,21 +226,7 @@ class DraftBoard extends React.Component {
               <Table.Cell></Table.Cell>
             </Table.Row>
             <Table.Row className="trow">
-              <Table.Cell collapsing>14
-              </Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing>15
+              <Table.Cell collapsing className="round">15
               </Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
