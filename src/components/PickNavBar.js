@@ -7,20 +7,21 @@ import { Menu, Button, Dropdown } from 'semantic-ui-react';
 class PickNavBar extends React.Component {
   state = {
     activeTab: 'Board',
-    searchQuery: ''
+    searchQuery: '',
+    value: ''
   }
   //Menu Tabs
   handleTabClick = (e, { name }) => this.setState({ activeTab: name })
 
   //Search Dropdown
-  handleChange = (e, { searchQuery, value }) => this.setState({ searchQuery, value })
+  handleChange = (e, { searchQuery, value }) => this.setState({ searchQuery: '', value })
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery })
 
   render() {
     const { activeTab, searchQuery, value } = this.state
 
     const players = this.props.players.map(p => {
-      return {key: p.id, text: `${p.fname} ${p.lname} (${p.position}-${p.team})`}
+      return {key: p.id, value: p.id, text: `${p.fname} ${p.lname} (${p.position}-${p.team})`}
     })
 
     return(

@@ -22,7 +22,7 @@ class DraftBoardContainer extends React.Component {
 
 
   render() {
-    console.log(this.state.players);
+    // console.log(this.state.players);
     return(
       <div>
         <PickNavBar
