@@ -1,7 +1,12 @@
 
 .trow {
-  height: 50px;
+  height: 75px;
 }
+
+/* .round {
+  width: 20px;
+  min-height: 40px;
+} */
 
 .dropdown {
   margin-top: 7px;
@@ -11,4 +16,63 @@
 
 .theader {
   text-align: center;
+}
+
+.playerPos {
+  font-size: 10px;
+  float: left;
+  margin-top: -2px;
+}
+
+.playerBye {
+  font-size: 10px;
+  float: right;
+  margin-top: -2px;
+}
+
+.playerTeam {
+  font-size: 10px;
+  float: right;
+  margin-top: -2px;
+}
+
+.playerFName {
+  text-align: center;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  clear: both;
+}
+
+.playerLName {
+  text-align: center;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  clear: both;
+}
+
+/* .playerLName sup {
+  top: -1.5em;
+  font-size: 40%;
+} */
+
+.roundInCell {
+  font-size: 10px;
+  float: left;
+  margin-top: -2px;
+}
+
+.pickNumber {
+  text-align: center;
+  font-size: 28px;
+  line-height: 54px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  clear: both;
 }

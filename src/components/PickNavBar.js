@@ -10,6 +10,7 @@ class PickNavBar extends React.Component {
     searchQuery: '',
     value: ''
   }
+  
   //Menu Tabs
   handleTabClick = (e, { name }) => this.setState({ activeTab: name })
 
