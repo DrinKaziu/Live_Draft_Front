@@ -1,6 +1,7 @@
 import React from 'react';
 import PlayerList from './PlayerList';
 import { Table } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 
 
 
@@ -9,18 +10,9 @@ class DraftBoard extends React.Component {
 
   render() {
 
-    const teams = [
-      {name: 'NachosTacos'},
-      {name: 'Treats4Life'},
-      {name: 'Yo Belichick Yo Self'},
-      {name: 'Dez Nuts'},
-      {name: 'Game of Jones'},
-      {name: 'Highway to Bell'},
-      {name: 'Dak in a Box'},
-      {name: 'OBJYN'},
-      {name: 'Brady Gaga'},
-      {name: 'Forgetting Brandon Marshall'}
-    ]
+    const {teams} = this.props
+
+    console.log(this.props);
 
     // const numOfRounds = 15
     // const rounds = []
@@ -159,4 +151,8 @@ class DraftBoard extends React.Component {
   }
 }
 
-export default DraftBoard;
+function mapStateToProps(state) {
+  return {teams: state.teams}
+}
+
+export default connect(mapStateToProps)(DraftBoard);
