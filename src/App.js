@@ -34,7 +34,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <PickNavBar players={this.props.players}/>
-          <Route path='/board' component={DraftBoardContainer}/>
+          <Route exact path='/board' component={DraftBoardContainer}/>
           <Route exact path='/rankings' render={(props) => (<Rankings players={this.props.players} />)} />
         </div>
       </Router>

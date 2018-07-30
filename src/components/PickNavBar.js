@@ -33,7 +33,7 @@ class PickNavBar extends React.Component {
   render() {
     const { activeTab, searchQuery, value } = this.state
     const players = this.props.players.map(p => {
-      return {key: p.id, value: p.displayName, text: `${p.fname} ${p.lname} (${p.position}-${p.team})`}
+      return {key: p.id, value: p.displayName, text: `${p.overallRank}. ${p.fname} ${p.lname} (${p.position}-${p.team})`}
     })
 
     return(
