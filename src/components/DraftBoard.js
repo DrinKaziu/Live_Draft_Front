@@ -8,11 +8,11 @@ import { connect } from 'react-redux';
 class DraftBoard extends React.Component {
 
 
+
   render() {
 
     const {teams} = this.props
 
-    console.log(this.props);
 
     // const numOfRounds = 15
     // const rounds = []
@@ -43,7 +43,7 @@ class DraftBoard extends React.Component {
             </Table.Row>
           </Table.Header>
 
-          <Table.Body fixed>
+          <Table.Body fixed='true'>
             <Table.Row className="trow">
               <Table.Cell collapsing className="round">1</Table.Cell>
               {teams.map(team => (

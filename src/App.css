@@ -76,3 +76,15 @@
   overflow: hidden;
   clear: both;
 }
+
+.all_player_table {
+  display: block;
+  height: 1100px;
+  overflow-y: scroll;
+}
+
+.pos_table {
+  display: block;
+  height: 300px;
+  overflow-y: scroll;
+}

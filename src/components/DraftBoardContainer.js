@@ -1,41 +1,57 @@
 import React from 'react';
-import { getPlayers } from '../api/railsAPI';
-import { connect } from 'react-redux';
+import { createTeam, createJoin } from '../api/railsAPI';
 import DraftBoard from './DraftBoard';
-import PickNavBar from './PickNavBar';
+import CreateLeagueForm from './CreateLeagueForm';
 
 
 class DraftBoardContainer extends React.Component {
 
-  componentDidMount() {
-    getPlayers()
-    .then(players => {
+
+  handleCreateTeam = (name) => {
+    createTeam(name)
+    .then( team => {
       this.props.dispatch({
-        type: 'GET_PLAYERS',
-        payload: players
+        type: 'CREATE_TEAM',
+        payload: team
       })
-      // this.setState({players})
     })
+    .then( () => this.props.history.push('/teams'))
+    .catch(e => console.log('error', e))
+  }
+
+  handleSelectPlayer = (player, teamId) => {
+    createJoin(player, teamId)
+    .then( updatedTeam => {
+      const newTeams = this.props.teams.map( t => {
+          if (t.id === updatedTeam.id ) {
+            return updatedTeam
+          } else {
+            return t
+          }
+        })
+        this.props.dispatch({
+          type: 'SELECT_PLAYER',
+          payload: newTeams
+        })
+      }
+    )
   }
 
   render() {
-    console.log(this.props);
-    // console.log(this.state.players);
     return(
       <div>
-        <PickNavBar players={this.props.players}/>
-        <DraftBoard players={this.props.players}/>
+        <CreateLeagueForm
+          handleCreateTeam={this.handleCreateTeam}
+        />
+        <DraftBoard
+          players={this.props.players}
+          teams={this.props.teams}
+          handleSelectPlayer={this.handleSelectPlayer}
+        />
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {players: state.players}
-}
 
-// function mapDispatchToProps(dispatch) {
-//   return {}
-// }
-
-export default connect(mapStateToProps)(DraftBoardContainer);
+export default DraftBoardContainer;
