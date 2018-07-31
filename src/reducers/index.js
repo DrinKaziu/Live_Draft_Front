@@ -11,7 +11,7 @@ export function reducer(state = initialState, action) {
     case 'GET_TEAMS':
       return {...state, teams: action.payload}
     case 'CREATE_TEAM':
-      return {...state, teams: action.payload}
+      return {...state, teams: [...state.teams, action.payload]}
     case 'SELECT_PLAYER':
       return {...state, teams: action.payload}
     default:

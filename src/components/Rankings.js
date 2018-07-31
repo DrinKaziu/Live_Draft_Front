@@ -22,7 +22,7 @@ class Rankings extends React.Component {
               <h3>All Players</h3>
               <Table className='all_player_table' color='grey' sortable celled padded size='small'>
                 <Table.Header>
-                  <Table.Row>
+                  <Table.Row >
                     <Table.HeaderCell>Player</Table.HeaderCell>
                     <Table.HeaderCell>Pos</Table.HeaderCell>
                     <Table.HeaderCell>Team</Table.HeaderCell>
@@ -102,7 +102,7 @@ class Rankings extends React.Component {
             </Segment>
             <Segment>
               <h3>Kickers</h3>
-              <Table className='pos_table' color='orange' sortable celled padded size='small'>
+              <Table className='pos_table' color='grey' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>
@@ -182,7 +182,7 @@ class Rankings extends React.Component {
             </Segment>
             <Segment>
               <h3>Defense</h3>
-              <Table className='pos_table' color='teal' sortable celled padded size='small'>
+              <Table className='pos_table' color='purple' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>

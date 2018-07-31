@@ -89,3 +89,33 @@
   height: 300px;
   overflow-y: scroll;
 }
+
+.QB {
+  color: rgb(50, 132, 21);
+  background-color: rgba(231, 241, 222, 0.5);
+}
+
+.RB {
+  color: rgb(178, 46, 46);
+  background-color: rgba(240, 222, 222, 0.5);
+}
+
+.WR {
+  color: rgb(163, 158, 16);
+  background-color: rgba(255, 253, 193, 0.5);
+}
+
+.TE {
+  color: rgb(9, 136, 239);
+  background-color: rgba(222, 233, 242, 0.5);
+}
+
+.DEF {
+  color: rgb(114, 31, 175);
+  background-color: rgba(237, 217, 252, 0.5);
+}
+
+.K {
+  color: rgb(130, 128, 128);
+  background-color: rgba(232, 232, 232, 0.5);
+}

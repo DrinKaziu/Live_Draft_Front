@@ -11,16 +11,27 @@ class DraftBoard extends React.Component {
   render() {
 
     const {teams} = this.props
+
     let round = 0
     let pick = 0
+
     const numRounds = _.times(10, i => (
       <Table.Row className="trow" key={i}>
         <Table.Cell collapsing className="round">ROUND {round += 1}</Table.Cell>
         {teams.map(team => (
-          <Table.Cell>
-            <div className="roundInCell">round {round}</div>
-            <div className="pickNumber">{pick += 1}</div>
-          </Table.Cell>
+          team.picks[round - 1] !== undefined ?
+            <Table.Cell className={team.picks[round-1].position}>
+              <div className="playerPos">{team.picks[round - 1].position}</div>
+              <div className="playerBye">({team.picks[round - 1].byeWeek})</div>
+              <div className="playerTeam">{team.picks[round - 1].team}</div>
+              <div className="playerFName">{team.picks[round - 1].fname}</div>
+              <div className="playerLName">{team.picks[round - 1].lname}</div>
+            </Table.Cell>
+            :
+            <Table.Cell>
+              <div className="roundInCell">round {round}</div>
+              <div className="pickNumber">{pick += 1}</div>
+            </Table.Cell>
         ))}
       </Table.Row>
     ))
@@ -52,11 +63,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(DraftBoard);
-
-{/* <Table.Cell positive>
-  <div className="playerPos">QB</div>
-  <div className="playerBye">(4)</div>
-  <div className="playerTeam">WAS</div>
-  <div className="playerFName">Alex</div>
-  <div className="playerLName">Smith</div>
-</Table.Cell> */}

@@ -20,7 +20,7 @@ class PickNavBar extends React.Component {
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery })
 
   //Draft Button
-  handleButtonClick = (e) => console.log(e.target.value);
+  handleButtonClick = (e) => this.setState({searchQuery: ''})
   // handleButtonClick = (e) => {
   //   this.props.handleSelectPlayer(this.props.player, this.state.value)
   // }

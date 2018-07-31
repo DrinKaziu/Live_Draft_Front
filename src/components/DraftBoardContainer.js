@@ -5,6 +5,7 @@ import DraftBoard from './DraftBoard';
 import CreateLeagueForm from './CreateLeagueForm';
 
 
+
 class DraftBoardContainer extends React.Component {
 
 
@@ -16,8 +17,8 @@ class DraftBoardContainer extends React.Component {
         payload: team
       })
     })
-    .then( () => this.props.history.push('/teams'))
     .catch(e => console.log('error', e))
+    // .then( () => this.props.history.push('/teams'))
   }
 
   handleSelectPlayer = (player, teamId) => {
