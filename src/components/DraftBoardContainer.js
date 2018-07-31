@@ -1,5 +1,6 @@
 import React from 'react';
 import { createTeam, createJoin } from '../api/railsAPI';
+import { connect } from 'react-redux';
 import DraftBoard from './DraftBoard';
 import CreateLeagueForm from './CreateLeagueForm';
 
@@ -53,5 +54,12 @@ class DraftBoardContainer extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    players: state.players,
+    teams: state.teams
+  }
+}
 
-export default DraftBoardContainer;
+
+export default connect(mapStateToProps)(DraftBoardContainer);

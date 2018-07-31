@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import PlayerList from './PlayerList';
 import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
@@ -7,27 +8,22 @@ import { connect } from 'react-redux';
 
 class DraftBoard extends React.Component {
 
-
-
   render() {
 
     const {teams} = this.props
-
-
-    // const numOfRounds = 15
-    // const rounds = []
-    // for (let i = 0; i < numOfRounds; i++) {
-    //   rounds.push(
-    //     <Table.Row className="trow">
-    //       <Table.Cell collapsing className="round">1</Table.Cell>
-    //         {teams.map(team => (
-    //           <Table.Cell></Table.Cell>
-    //         ))}
-    //       </Table.Row>
-    //     </Table.Row>
-    //   )
-    //   return rounds
-    // }
+    let round = 0
+    let pick = 0
+    const numRounds = _.times(10, i => (
+      <Table.Row className="trow" key={i}>
+        <Table.Cell collapsing className="round">ROUND {round += 1}</Table.Cell>
+        {teams.map(team => (
+          <Table.Cell>
+            <div className="roundInCell">round {round}</div>
+            <div className="pickNumber">{pick += 1}</div>
+          </Table.Cell>
+        ))}
+      </Table.Row>
+    ))
 
 
     return(
@@ -42,108 +38,8 @@ class DraftBoard extends React.Component {
               ))}
             </Table.Row>
           </Table.Header>
-
           <Table.Body fixed='true'>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">1</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell positive>
-                  <div className="playerPos">QB</div>
-                  <div className="playerBye">(4)</div>
-                  <div className="playerTeam">WAS</div>
-                  <div className="playerFName">Alex</div>
-                  <div className="playerLName">Smith</div>
-                </Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">2</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell>
-                  <div className="roundInCell">round 2</div>
-                  <div className="pickNumber">11</div>
-                </Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">3</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">4</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">5</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">6</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">7</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">8</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">9</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">10</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">11</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">12</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">13</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">14</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-            <Table.Row className="trow">
-              <Table.Cell collapsing className="round">15</Table.Cell>
-              {teams.map(team => (
-                <Table.Cell></Table.Cell>
-              ))}
-            </Table.Row>
-
+            {numRounds}
           </Table.Body>
         </Table>
       </div>
@@ -156,3 +52,11 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(DraftBoard);
+
+{/* <Table.Cell positive>
+  <div className="playerPos">QB</div>
+  <div className="playerBye">(4)</div>
+  <div className="playerTeam">WAS</div>
+  <div className="playerFName">Alex</div>
+  <div className="playerLName">Smith</div>
+</Table.Cell> */}

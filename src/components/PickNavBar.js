@@ -41,7 +41,7 @@ class PickNavBar extends React.Component {
           <Menu.Item as={ Link } name='Board' exact='true' to='/board' active={activeTab === 'Board'} onClick={this.handleTabClick} />
           <Menu.Item as={ Link } name='Rankings' exact='true' to='/rankings' active={activeTab === 'Rankings'} onClick={this.handleTabClick} />
         <Dropdown
-          className="dropdown"
+          className='dropdown'
           compact
           deburr
           fluid
@@ -53,11 +53,11 @@ class PickNavBar extends React.Component {
           search
           searchQuery={searchQuery}
           selection
-          value={value.split()}
+          value={value}
         />
         <Menu.Item>
           <Button
-            color="google plus"
+            color='google plus'
             value={this.state.value}
             onClick={this.handleButtonClick}
             >DRAFT

@@ -1,5 +1,7 @@
 import React from 'react';
 
-const TeamList = (props) => {
-  
+const TeamsList = (props) => {
+
 }
+
+export default TeamsList;

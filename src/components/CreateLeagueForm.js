@@ -25,14 +25,14 @@ class CreateLeagueForm extends React.Component {
     if(!this.state.inputField) {
       this.setState({
         inputField:
-        <Form size='tiny'>
+        <Form size='tiny' onSubmit={this.handleSubmit}>
           <Form.Field width='6' size='medium'>
             <Form.Group widths='equal'>
-              <input fluid label='Team Name' placeholder='Team Name' onChange={this.newTeamName}/>
-              <input fluid label='Owner' placeholder='Owner'/>
+              <input fluid='true' label='Team Name' placeholder='Team Name' onChange={this.newTeamName}/>
+              <input fluid='true' label='Owner' placeholder='Owner'/>
             </Form.Group>
           </Form.Field>
-          <Button basic color='green' type='submit' size='tiny' onClick={this.handleSubmit}>Submit</Button>
+          <Button basic color='green' type='submit' size='tiny'>Submit</Button>
           <Button basic color='red' type='submit' size='tiny' onClick={this.createNewTeam}>Cancel</Button>
         </Form>
       })

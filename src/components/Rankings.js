@@ -34,7 +34,7 @@ class Rankings extends React.Component {
 
                 <Table.Body>
                     {this.props.players.map(p => (
-                      <Table.Row>
+                      <Table.Row key={p.id}>
                         <Table.Cell>{p.displayName}</Table.Cell>
                         <Table.Cell>{p.position}</Table.Cell>
                         <Table.Cell>{p.team}</Table.Cell>
@@ -50,7 +50,7 @@ class Rankings extends React.Component {
           <Grid.Column largeScreen='5'>
             <Segment>
               <h3>Quarterbacks</h3>
-              <Table className='pos_table' color='red' sortable celled padded size='small'>
+              <Table className='pos_table' color='green' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>
@@ -63,7 +63,7 @@ class Rankings extends React.Component {
 
                 <Table.Body>
                   {QBs.map(qb => (
-                    <Table.Row>
+                    <Table.Row key={qb.id}>
                       <Table.Cell>{qb.displayName}</Table.Cell>
                       <Table.Cell>{qb.position}</Table.Cell>
                       <Table.Cell>{qb.team}</Table.Cell>
@@ -89,7 +89,7 @@ class Rankings extends React.Component {
 
                 <Table.Body>
                   {WRs.map(wr => (
-                    <Table.Row>
+                    <Table.Row key={wr.id}>
                       <Table.Cell>{wr.displayName}</Table.Cell>
                       <Table.Cell>{wr.position}</Table.Cell>
                       <Table.Cell>{wr.team}</Table.Cell>
@@ -115,7 +115,7 @@ class Rankings extends React.Component {
 
                 <Table.Body>
                   {Ks.map(k => (
-                    <Table.Row>
+                    <Table.Row key={k.id}>
                       <Table.Cell>{k.displayName}</Table.Cell>
                       <Table.Cell>{k.position}</Table.Cell>
                       <Table.Cell>{k.team}</Table.Cell>
@@ -130,7 +130,7 @@ class Rankings extends React.Component {
           <Grid.Column largeScreen='5'>
             <Segment>
               <h3>Runningbacks</h3>
-              <Table className='pos_table' color='green' sortable celled padded size='small'>
+              <Table className='pos_table' color='red' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>
@@ -143,7 +143,7 @@ class Rankings extends React.Component {
 
                 <Table.Body>
                   {RBs.map(rb => (
-                    <Table.Row>
+                    <Table.Row key={rb.id}>
                       <Table.Cell>{rb.displayName}</Table.Cell>
                       <Table.Cell>{rb.position}</Table.Cell>
                       <Table.Cell>{rb.team}</Table.Cell>
@@ -169,7 +169,7 @@ class Rankings extends React.Component {
 
                 <Table.Body>
                   {TEs.map(te => (
-                    <Table.Row>
+                    <Table.Row key={te.id}>
                       <Table.Cell>{te.displayName}</Table.Cell>
                       <Table.Cell>{te.position}</Table.Cell>
                       <Table.Cell>{te.team}</Table.Cell>
@@ -195,7 +195,7 @@ class Rankings extends React.Component {
 
                 <Table.Body>
                   {DEF.map(def => (
-                    <Table.Row>
+                    <Table.Row key={def.id}>
                       <Table.Cell>{def.displayName}</Table.Cell>
                       <Table.Cell>{def.position}</Table.Cell>
                       <Table.Cell>{def.team}</Table.Cell>
