@@ -3,24 +3,33 @@ import _ from 'lodash';
 import PlayerList from './PlayerList';
 import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { getPicks } from '../api/railsAPI'
 
 
 
 class DraftBoard extends React.Component {
 
-  render() {
+  state = {
+    picks: 0
+  }
 
+  componentDidMount() {
+    getPicks()
+    .then(picks => this.setState({picks: picks.length}))
+  }
+
+  render() {
     const {teams} = this.props
 
     let round = 0
-    let pick = 0
+    let picks = this.state.picks
 
     const numRounds = _.times(10, i => (
       <Table.Row className="trow" key={i}>
         <Table.Cell collapsing className="round">ROUND {round += 1}</Table.Cell>
         {teams.map(team => (
           team.picks[round - 1] !== undefined ?
-            <Table.Cell className={team.picks[round-1].position}>
+            <Table.Cell className={team.picks[round - 1].position}>
               <div className="playerPos">{team.picks[round - 1].position}</div>
               <div className="playerBye">({team.picks[round - 1].byeWeek})</div>
               <div className="playerTeam">{team.picks[round - 1].team}</div>
@@ -30,7 +39,7 @@ class DraftBoard extends React.Component {
             :
             <Table.Cell>
               <div className="roundInCell">round {round}</div>
-              <div className="pickNumber">{pick += 1}</div>
+              <div className="pickNumber">{picks += 1}</div>
             </Table.Cell>
         ))}
       </Table.Row>

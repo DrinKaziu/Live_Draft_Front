@@ -39,3 +39,8 @@ export function createJoin(player, teamId) {
   return fetch(`${baseUrl}/picks`, options)
   .then(res => res.json())
 }
+
+export function getPicks() {
+  return fetch(`${baseUrl}/picks`)
+    .then(res => res.json())
+}
