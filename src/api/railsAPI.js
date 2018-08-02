@@ -25,7 +25,7 @@ export function getTeams() {
   .then(res => res.json())
 }
 
-export function createJoin(player, teamId) {
+export function createPick(teamId, playerId) {
   const options = {
     headers: {
       'Accepts': 'application/json',
@@ -33,7 +33,7 @@ export function createJoin(player, teamId) {
     },
     method: 'POST',
     body: JSON.stringify({
-      pick: {team_id: teamId, player: player}
+      pick: {team_id: teamId, player_id: playerId}
     })
   }
   return fetch(`${baseUrl}/picks`, options)

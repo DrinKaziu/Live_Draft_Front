@@ -1,5 +1,5 @@
 import React from 'react';
-import { createTeam, createJoin } from '../api/railsAPI';
+import { createTeam, createPick } from '../api/railsAPI';
 import { connect } from 'react-redux';
 import DraftBoard from './DraftBoard';
 import CreateLeagueForm from './CreateLeagueForm';
@@ -21,23 +21,17 @@ class DraftBoardContainer extends React.Component {
     // .then( () => this.props.history.push('/teams'))
   }
 
-  handleSelectPlayer = (player, teamId) => {
-    createJoin(player, teamId)
-    .then( updatedTeam => {
-      const newTeams = this.props.teams.map( t => {
-          if (t.id === updatedTeam.id ) {
-            return updatedTeam
-          } else {
-            return t
-          }
-        })
-        this.props.dispatch({
-          type: 'SELECT_PLAYER',
-          payload: newTeams
-        })
-      }
-    )
+  handleCreatePick = (teamId, player) => {
+    createPick(teamId, player)
+    .then( pick => {
+      this.props.dispatch({
+        tyep: 'CREATE_PICK',
+        payload: pick
+      })
+    })
+    .catch(e => console.log('err', e))
   }
+
 
   render() {
     return(
@@ -58,7 +52,8 @@ class DraftBoardContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     players: state.players,
-    teams: state.teams
+    teams: state.teams,
+    picks: state.picks
   }
 }
 

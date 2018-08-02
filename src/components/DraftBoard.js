@@ -9,26 +9,30 @@ import { getPicks } from '../api/railsAPI'
 
 class DraftBoard extends React.Component {
 
-  state = {
-    picks: 0
-  }
-
   componentDidMount() {
     getPicks()
-    .then(picks => this.setState({picks: picks.length}))
+    .then(picks => {
+      this.props.dispatch({
+        type: 'GET_PICKS',
+        payload: picks
+      })
+    })
   }
 
+
   render() {
+
     const {teams} = this.props
 
     let round = 0
-    let picks = this.state.picks
+    let totalPicks = 0
 
     const numRounds = _.times(10, i => (
       <Table.Row className="trow" key={i}>
         <Table.Cell collapsing className="round">ROUND {round += 1}</Table.Cell>
-        {teams.map(team => (
-          team.picks[round - 1] !== undefined ?
+        {teams.map(team => {
+          totalPicks+=1
+          return team.picks[round - 1] !== undefined ?
             <Table.Cell className={team.picks[round - 1].position}>
               <div className="playerPos">{team.picks[round - 1].position}</div>
               <div className="playerBye">({team.picks[round - 1].byeWeek})</div>
@@ -39,9 +43,9 @@ class DraftBoard extends React.Component {
             :
             <Table.Cell>
               <div className="roundInCell">round {round}</div>
-              <div className="pickNumber">{picks += 1}</div>
+              <div className="pickNumber">{totalPicks}</div>
             </Table.Cell>
-        ))}
+        })}
       </Table.Row>
     ))
 
@@ -68,7 +72,11 @@ class DraftBoard extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {teams: state.teams}
+  return {
+    teams: state.teams,
+    picks: state.picks,
+    currentTeam: state.currentTeam
+  }
 }
 
 export default connect(mapStateToProps)(DraftBoard);

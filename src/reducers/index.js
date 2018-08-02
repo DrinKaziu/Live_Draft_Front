@@ -1,7 +1,8 @@
 
 const initialState = {
   players: [],
-  teams: []
+  teams: [],
+  picks: []
 }
 
 export function reducer(state = initialState, action) {
@@ -12,8 +13,15 @@ export function reducer(state = initialState, action) {
       return {...state, teams: action.payload}
     case 'CREATE_TEAM':
       return {...state, teams: [...state.teams, action.payload]}
-    case 'SELECT_PLAYER':
-      return {...state, teams: action.payload}
+    case 'CREATE_PICK':
+      const teamToCopy = state.teams.find(team => team.id === action.payload.pick.team_id)
+      const index = state.teams.indexOf(teamToCopy)
+      const teamCopy = {...teamToCopy, picks: [...teamToCopy.picks, action.payload.pick.player]}
+      const copyTeams = [...state.teams]
+      copyTeams.splice(index, 1, teamCopy)
+      return {...state, teams: copyTeams}
+    case 'GET_PICKS':
+      return {...state, picks: action.payload}
     default:
       return state
   }

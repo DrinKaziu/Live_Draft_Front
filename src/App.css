@@ -9,9 +9,13 @@
 } */
 
 .dropdown {
-  margin-top: 7px;
-  margin-left: 600px;
-  height: 20px;
+  width: 220px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.undo_icon {
+  padding-left: 5px;
 }
 
 .theader {
@@ -38,7 +42,7 @@
 
 .playerFName {
   text-align: center;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 18px;
   font-weight: bold;
   white-space: nowrap;
@@ -48,7 +52,7 @@
 
 .playerLName {
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 36px;
   font-weight: bold;
   white-space: nowrap;
