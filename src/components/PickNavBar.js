@@ -12,7 +12,8 @@ class PickNavBar extends React.Component {
     activeTab: 'Board',
     searchQuery: '',
     value: '',
-    currentTeam: {id: 3}
+    toggle: false,
+    currentTeamId: 21
   }
 
   //Menu Tabs
@@ -22,8 +23,22 @@ class PickNavBar extends React.Component {
   handleChange = (e, { searchQuery, value }) => this.setState({ searchQuery: '', value })
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery })
 
+
+  nextUp = () => {
+    if (this.state.currentTeamId < 30 && this.state.toggle === false) {
+      this.setState(prevState => ({currentTeamId: prevState.currentTeamId + 1}))
+    } else if (this.state.currentTeamId > 21 && this.state.toggle === true) {
+      this.setState(prevState => ({currentTeamId: prevState.currentTeamId - 1}))
+    } else if (this.state.currentTeamId === 30 ){
+      this.setState({toggle: !this.state.toggle})
+    } else if (this.state.currentTeamId === 21) {
+      this.setState({toggle: !this.state.toggle})
+    }
+  }
+
   handlePick = () => {
-    createPick(this.state.currentTeam.id, this.state.value)
+    this.nextUp()
+    createPick(this.state.currentTeamId, this.state.value)
     .then( pick => {
       this.props.dispatch({type: 'CREATE_PICK', payload: {
         pick: pick
@@ -41,7 +56,7 @@ class PickNavBar extends React.Component {
       <Menu tabular>
         <Menu.Item as={ Link } name='Board' exact='true' to='/board' active={activeTab === 'Board'} onClick={this.handleTabClick} />
         <Menu.Item as={ Link } name='Rankings' exact='true' to='/rankings' active={activeTab === 'Rankings'} onClick={this.handleTabClick} />
-        <Step.Group size='mini'>
+        <Step.Group size='mini' fluid>
           <Step>
             <Step.Content>
               <Step.Title>Last Pick: Graham Gano</Step.Title>
@@ -77,10 +92,15 @@ class PickNavBar extends React.Component {
           </Step>
           <Step disabled>
             <Step.Content>
-              <Step.Title>On Deck: Treats4Life</Step.Title>
+              <Step.Title>On Deck: </Step.Title>
             </Step.Content>
           </Step>
         </Step.Group>
+        <Menu.Item>
+          <Button>
+            ---
+          </Button>
+        </Menu.Item>
       </Menu>
     )
   }
