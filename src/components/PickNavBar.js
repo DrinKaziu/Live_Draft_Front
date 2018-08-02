@@ -12,7 +12,6 @@ class PickNavBar extends React.Component {
     activeTab: 'Board',
     searchQuery: '',
     value: '',
-    currentPlayer: {},
     currentTeam: {id: 3}
   }
 
@@ -24,7 +23,6 @@ class PickNavBar extends React.Component {
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery })
 
   handlePick = () => {
-    console.log(this.state);
     createPick(this.state.currentTeam.id, this.state.value)
     .then( pick => {
       this.props.dispatch({type: 'CREATE_PICK', payload: {
@@ -43,8 +41,7 @@ class PickNavBar extends React.Component {
       <Menu tabular>
         <Menu.Item as={ Link } name='Board' exact='true' to='/board' active={activeTab === 'Board'} onClick={this.handleTabClick} />
         <Menu.Item as={ Link } name='Rankings' exact='true' to='/rankings' active={activeTab === 'Rankings'} onClick={this.handleTabClick} />
-
-        <Step.Group widths={28} size='mini'>
+        <Step.Group size='mini'>
           <Step>
             <Step.Content>
               <Step.Title>Last Pick: Graham Gano</Step.Title>
@@ -53,7 +50,7 @@ class PickNavBar extends React.Component {
           </Step>
           <Step active>
             <Step.Content>
-              <Step.Title>NachosTacos
+              <Step.Title>Nachos Tacos
                 <Dropdown
                   className='dropdown'
                   compact
@@ -84,7 +81,6 @@ class PickNavBar extends React.Component {
             </Step.Content>
           </Step>
         </Step.Group>
-
       </Menu>
     )
   }
