@@ -1,5 +1,7 @@
 import React from 'react';
-import { Grid, Segment, Table } from 'semantic-ui-react'
+import { Grid, Segment, Table } from 'semantic-ui-react';
+
+
 
 class Rankings extends React.Component {
 
@@ -20,21 +22,21 @@ class Rankings extends React.Component {
           <Grid.Column largeScreen='6'>
             <Segment>
               <h3>All Players</h3>
-              <Table className='all_player_table' color='grey' sortable celled padded size='large'>
+              <Table className='all_player_table' color='grey' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row >
                     <Table.HeaderCell>Player</Table.HeaderCell>
                     <Table.HeaderCell>Position</Table.HeaderCell>
                     <Table.HeaderCell>Team</Table.HeaderCell>
-                    <Table.HeaderCell>Rank</Table.HeaderCell>
-                    <Table.HeaderCell>Pos Rank</Table.HeaderCell>
-                    <Table.HeaderCell>Bye Week</Table.HeaderCell>
+                    <Table.HeaderCell>Rnk</Table.HeaderCell>
+                    <Table.HeaderCell>PRank</Table.HeaderCell>
+                    <Table.HeaderCell>Bye</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
                     {this.props.players.map(p => (
-                      <Table.Row key={p.id}>
+                      <Table.Row key={p.id} onClick={this.handlePick}>
                         <Table.Cell>{p.displayName}</Table.Cell>
                         <Table.Cell>{p.position}</Table.Cell>
                         <Table.Cell>{p.team}</Table.Cell>
@@ -50,14 +52,13 @@ class Rankings extends React.Component {
           <Grid.Column largeScreen='5'>
             <Segment>
               <h3>Quarterbacks</h3>
-              <Table className='pos_table' color='green' sortable celled padded size='large'>
+              <Table className='pos_table' color='green' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>
-                    <Table.HeaderCell>Position</Table.HeaderCell>
+                    <Table.HeaderCell>Pos</Table.HeaderCell>
                     <Table.HeaderCell>Team</Table.HeaderCell>
-                    <Table.HeaderCell>Rank</Table.HeaderCell>
-                    <Table.HeaderCell>PosRnk</Table.HeaderCell>
+                    <Table.HeaderCell>Rnk</Table.HeaderCell>
                     <Table.HeaderCell>Bye</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -69,7 +70,6 @@ class Rankings extends React.Component {
                       <Table.Cell>{qb.position}</Table.Cell>
                       <Table.Cell>{qb.team}</Table.Cell>
                       <Table.Cell>{qb.overallRank}</Table.Cell>
-                      <Table.Cell>{qb.positionRank}</Table.Cell>
                       <Table.Cell>{qb.byeWeek}</Table.Cell>
                     </Table.Row>
                   ))}
@@ -78,14 +78,13 @@ class Rankings extends React.Component {
             </Segment>
             <Segment>
               <h3>Wide Receivers</h3>
-              <Table className='pos_table' color='yellow' sortable celled padded size='large'>
+              <Table className='pos_table' color='yellow' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>
-                    <Table.HeaderCell>Position</Table.HeaderCell>
+                    <Table.HeaderCell>Pos</Table.HeaderCell>
                     <Table.HeaderCell>Team</Table.HeaderCell>
-                    <Table.HeaderCell>Rank</Table.HeaderCell>
-                    <Table.HeaderCell>PosRnk</Table.HeaderCell>
+                    <Table.HeaderCell>Rnk</Table.HeaderCell>
                     <Table.HeaderCell>Bye</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -97,7 +96,6 @@ class Rankings extends React.Component {
                       <Table.Cell>{wr.position}</Table.Cell>
                       <Table.Cell>{wr.team}</Table.Cell>
                       <Table.Cell>{wr.overallRank}</Table.Cell>
-                      <Table.Cell>{wr.positionRank}</Table.Cell>
                       <Table.Cell>{wr.byeWeek}</Table.Cell>
                     </Table.Row>
                   ))}
@@ -106,14 +104,13 @@ class Rankings extends React.Component {
             </Segment>
             <Segment>
               <h3>Kickers</h3>
-              <Table className='pos_table' color='grey' sortable celled padded size='large'>
+              <Table className='pos_table' color='grey' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>
-                    <Table.HeaderCell>Position</Table.HeaderCell>
+                    <Table.HeaderCell>Pos</Table.HeaderCell>
                     <Table.HeaderCell>Team</Table.HeaderCell>
-                    <Table.HeaderCell>Rank</Table.HeaderCell>
-                    <Table.HeaderCell>PosRnk</Table.HeaderCell>
+                    <Table.HeaderCell>Rnk</Table.HeaderCell>
                     <Table.HeaderCell>Bye</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -125,7 +122,6 @@ class Rankings extends React.Component {
                       <Table.Cell>{k.position}</Table.Cell>
                       <Table.Cell>{k.team}</Table.Cell>
                       <Table.Cell>{k.overallRank}</Table.Cell>
-                      <Table.Cell>{k.positionRank}</Table.Cell>
                       <Table.Cell>{k.byeWeek}</Table.Cell>
                     </Table.Row>
                   ))}
@@ -136,14 +132,13 @@ class Rankings extends React.Component {
           <Grid.Column largeScreen='5'>
             <Segment>
               <h3>Runningbacks</h3>
-              <Table className='pos_table' color='red' sortable celled padded size='large'>
+              <Table className='pos_table' color='red' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>
-                    <Table.HeaderCell>Position</Table.HeaderCell>
+                    <Table.HeaderCell>Pos</Table.HeaderCell>
                     <Table.HeaderCell>Team</Table.HeaderCell>
-                    <Table.HeaderCell>Rank</Table.HeaderCell>
-                    <Table.HeaderCell>PosRnk</Table.HeaderCell>
+                    <Table.HeaderCell>Rnk</Table.HeaderCell>
                     <Table.HeaderCell>Bye</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -155,7 +150,6 @@ class Rankings extends React.Component {
                       <Table.Cell>{rb.position}</Table.Cell>
                       <Table.Cell>{rb.team}</Table.Cell>
                       <Table.Cell>{rb.overallRank}</Table.Cell>
-                      <Table.Cell>{rb.positionRank}</Table.Cell>
                       <Table.Cell>{rb.byeWeek}</Table.Cell>
                     </Table.Row>
                   ))}
@@ -164,14 +158,13 @@ class Rankings extends React.Component {
             </Segment>
             <Segment>
               <h3>Tight Ends</h3>
-              <Table className='pos_table' color='blue' sortable celled padded size='large'>
+              <Table className='pos_table' color='blue' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>
-                    <Table.HeaderCell>Position</Table.HeaderCell>
+                    <Table.HeaderCell>Pos</Table.HeaderCell>
                     <Table.HeaderCell>Team</Table.HeaderCell>
-                    <Table.HeaderCell>Rank</Table.HeaderCell>
-                    <Table.HeaderCell>PosRnk</Table.HeaderCell>
+                    <Table.HeaderCell>Rnk</Table.HeaderCell>
                     <Table.HeaderCell>Bye</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -183,7 +176,6 @@ class Rankings extends React.Component {
                       <Table.Cell>{te.position}</Table.Cell>
                       <Table.Cell>{te.team}</Table.Cell>
                       <Table.Cell>{te.overallRank}</Table.Cell>
-                      <Table.Cell>{te.positionRank}</Table.Cell>
                       <Table.Cell>{te.byeWeek}</Table.Cell>
                     </Table.Row>
                   ))}
@@ -192,14 +184,13 @@ class Rankings extends React.Component {
             </Segment>
             <Segment>
               <h3>Defense</h3>
-              <Table className='pos_table' color='purple' sortable celled padded size='large'>
+              <Table className='pos_table' color='purple' sortable celled padded size='small'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Player</Table.HeaderCell>
-                    <Table.HeaderCell>Position</Table.HeaderCell>
+                    <Table.HeaderCell>Pos</Table.HeaderCell>
                     <Table.HeaderCell>Team</Table.HeaderCell>
-                    <Table.HeaderCell>Rank</Table.HeaderCell>
-                    <Table.HeaderCell>PosRnk</Table.HeaderCell>
+                    <Table.HeaderCell>Rnk</Table.HeaderCell>
                     <Table.HeaderCell>Bye</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -211,7 +202,6 @@ class Rankings extends React.Component {
                       <Table.Cell>{def.position}</Table.Cell>
                       <Table.Cell>{def.team}</Table.Cell>
                       <Table.Cell>{def.overallRank}</Table.Cell>
-                      <Table.Cell>{def.positionRank}</Table.Cell>
                       <Table.Cell>{def.byeWeek}</Table.Cell>
                     </Table.Row>
                   ))}
@@ -224,5 +214,6 @@ class Rankings extends React.Component {
     )
   }
 }
+
 
 export default Rankings;

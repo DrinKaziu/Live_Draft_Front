@@ -42,7 +42,7 @@
 
 .playerFName {
   text-align: center;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 18px;
   font-weight: bold;
   white-space: nowrap;
@@ -52,7 +52,7 @@
 
 .playerLName {
   text-align: center;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 36px;
   font-weight: bold;
   white-space: nowrap;

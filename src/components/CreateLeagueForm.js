@@ -7,6 +7,7 @@ class CreateLeagueForm extends React.Component {
     super()
     this.state = {
       teamName: '',
+      position: '',
       inputField: ''
     }
   }
@@ -15,9 +16,13 @@ class CreateLeagueForm extends React.Component {
     this.setState({teamName: e.target.value})
   }
 
+  position = (e) => {
+    this.setState({position: e.target.value})
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.handleCreateTeam(this.state.teamName)
+    this.props.handleCreateTeam(this.state.teamName, this.state.position)
     this.setState({inputField: ''})
   }
 
@@ -29,7 +34,7 @@ class CreateLeagueForm extends React.Component {
           <Form.Field width='6' size='medium'>
             <Form.Group widths='equal'>
               <input fluid='true' label='Team Name' placeholder='Team Name' onChange={this.newTeamName}/>
-              <input fluid='true' label='Owner' placeholder='Owner'/>
+              <input fluid='true' label='Position' placeholder='Position' onChange={this.position}/>
             </Form.Group>
           </Form.Field>
           <Button basic color='green' type='submit' size='tiny'>Submit</Button>

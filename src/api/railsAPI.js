@@ -5,7 +5,7 @@ export function getPlayers() {
     .then(res => res.json())
 }
 
-export function createTeam(name) {
+export function createTeam(name, position) {
   const options = {
     headers: {
       'Accepts': 'application/json',
@@ -13,7 +13,7 @@ export function createTeam(name) {
     },
     method: 'POST',
     body: JSON.stringify({
-      team: {name: name}
+      team: {name: name, position: position}
     })
   }
   return fetch(`${baseUrl}/teams`, options)
@@ -43,4 +43,19 @@ export function createPick(teamId, playerId) {
 export function getPicks() {
   return fetch(`${baseUrl}/picks`)
     .then(res => res.json())
+}
+
+export function deletePick(teamId, playerId) {
+  const options = {
+    headers: {
+      'Accepts': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'DELETE',
+    body: JSON.stringify({
+      pick: {team_id: teamId, player_id: playerId}
+    })
+  }
+  return fetch(`${baseUrl}/picks`, options)
+  .then(res => res.json())
 }
