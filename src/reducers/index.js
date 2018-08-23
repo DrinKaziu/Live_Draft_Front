@@ -20,13 +20,6 @@ export function reducer(state = initialState, action) {
       const copyTeams = [...state.teams]
       copyTeams.splice(index, 1, teamCopy)
       return {...state, teams: copyTeams}
-    case 'DELETE_PICK':
-      const deleteTeamToCopy = state.teams.find(team => team.id === action.payload.pick.team_id)
-      let deleteIndex = state.teams.indexOf(deleteTeamToCopy)
-      const deleteTeamCopy = {...deleteTeamToCopy, picks: [...deleteTeamToCopy.picks, action.payload.pick.player]}
-      const copyDeleteTeams = [...state.teams]
-      copyDeleteTeams.splice(deleteIndex, 1)
-      return {...state, teams: copyDeleteTeams}
     case 'GET_PICKS':
       return {...state, picks: action.payload}
     default:

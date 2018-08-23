@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu, Button, Dropdown, Step, Icon } from 'semantic-ui-react';
-import { createPick, deletePick } from '../api/railsAPI';
+import { createPick } from '../api/railsAPI';
 
 
 class PickNavBar extends React.Component {
@@ -11,25 +11,39 @@ class PickNavBar extends React.Component {
     searchQuery: '',
     value: '',
     toggle: false,
-    currentTeamId: 3
+    currentTeamId: 3,
+    lastTeamId: '',
+    onDeckId: ''
   }
 
   //Menu Tabs
   handleTabClick = (e, { name }) => this.setState({ activeTab: name })
 
   //Search Dropdown
-  handleChange = (e, { searchQuery, value}) => this.setState({ searchQuery: '', value })
+  handleChange = (e, { searchQuery, value }) => this.setState({ searchQuery: '', value })
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery })
 
 
   nextUp = () => {
-    if (this.state.currentTeamId < 12 && this.state.toggle === false) {
-      this.setState(prevState => ({currentTeamId: prevState.currentTeamId + 1}))
-    } else if (this.state.currentTeamId > 3 && this.state.toggle === true) {
-      this.setState(prevState => ({currentTeamId: prevState.currentTeamId - 1}))
-    } else if (this.state.currentTeamId === 12 ){
+    if (this.state.currentTeamId < 22 && this.state.toggle === false) {
+      this.setState(prevState => (
+        {
+          currentTeamId: prevState.currentTeamId + 1,
+          lastTeamId: prevState.currentTeamId,
+          onDeckId: prevState.currentTeamId+2
+        }
+      ))
+    } else if (this.state.currentTeamId > 13 && this.state.toggle === true) {
+      this.setState(prevState => (
+        {
+          currentTeamId: prevState.currentTeamId - 1,
+          lastTeamId: prevState.currentTeamId,
+          onDeckId: prevState.currentTeamId - 2
+        }
+      ))
+    } else if (this.state.currentTeamId === 22){
       this.setState({toggle: !this.state.toggle})
-    } else if (this.state.currentTeamId === 3) {
+    } else if (this.state.currentTeamId === 13) {
       this.setState({toggle: !this.state.toggle})
     }
   }
@@ -44,21 +58,26 @@ class PickNavBar extends React.Component {
     })
   }
 
-  handleDeletePick = () => {
-    deletePick(this.state.currentTeamId, this.state.value)
-    .then(console.log())
-  }
+  // handleDeletePick = () => {
+  //   deletePick(this.state.currentTeamId, this.state.value)
+  //   .then(console.log())
+  // }
 
 
   render() {
+    console.log(this.state.lastTeamId);
     const { activeTab, searchQuery, value } = this.state
+
+    const currentPick = this.props.teams.find(team => team.id === this.state.currentTeamId)
+    let currentPickName = currentPick ? currentPickName = currentPick.name : null
+    const lastPick = this.props.teams.find(team => team.id === this.state.lastTeamId)
+    let lastPickName = lastPick ? lastPickName = lastPick.name : null
+    const onDeckPick = this.props.teams.find(team => team.id === this.state.onDeckId)
+    let onDeckPickName = onDeckPick ? onDeckPickName = onDeckPick.name : null
 
     const players = this.props.players.map(p => {
       return {key: p.id, value: p.id, text: `${p.overallRank}. ${p.fname} ${p.lname} (${p.position}-${p.team})`}
     })
-
-    const currentPick = this.props.teams.find(team => team.id === this.state.currentTeamId)
-    let currentPickName = currentPick ? currentPickName = currentPick.name : null
 
     return(
       <Menu tabular>
@@ -67,7 +86,7 @@ class PickNavBar extends React.Component {
         <Step.Group size='mini' fluid>
           <Step>
             <Step.Content>
-              <Step.Title>Last Pick: </Step.Title>
+              <Step.Title>Last Pick: {lastPickName}</Step.Title>
             </Step.Content>
             <Icon onClick={this.handleDeletePick} className='undo_icon' name='undo alternate' color='red'/>
           </Step>
@@ -97,11 +116,11 @@ class PickNavBar extends React.Component {
               </Step.Title>
             </Step.Content>
           </Step>
-          {/* <Step disabled>
+          <Step disabled>
             <Step.Content>
-              <Step.Title>On Deck: </Step.Title>
+              <Step.Title>On Deck: {onDeckPickName}</Step.Title>
             </Step.Content>
-          </Step> */}
+          </Step>
         </Step.Group>
         <Menu.Item>
           <Dropdown simple icon='bars' fluid compact direction='left'>
